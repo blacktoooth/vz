@@ -4,6 +4,9 @@
   "description": "Graphic visualizer",
   "main": "index.js",
   "scripts": {
+    "start": "yarn run babel-webpack & yarn run webpack-server",
+    "babel-webpack": "babel webpack.config.babel.js --watch --out-file webpack.config.js",
+    "webpack-server": "webpack-dev-server --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +20,39 @@
   },
   "homepage": "https://github.com/blacktoooth/vz#readme",
   "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.0",
+    "babel-plugin-transform-async-functions": "^6.22.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.1.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "json-loader": "^0.5.4",
+    "normalize.css": "^7.0.0",
+    "postcss": "^6.0.3",
+    "postcss-browser-reporter": "^0.5.0",
+    "postcss-cssnext": "^2.11.0",
+    "postcss-for": "^2.1.1",
+    "postcss-import": "^10.0.0",
+    "postcss-loader": "^2.0.6",
+    "postcss-nested": "^2.0.2",
+    "postcss-reporter": "^4.0.0",
+    "postcss-url": "^7.0.0",
     "rxjs": "^5.4.1",
-    "three.js": "^0.77.1"
+    "style-loader": "^0.18.2",
+    "three": "^0.86.0",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0",
+    "webpack-hot-middleware": "^2.18.0"
   }
 }
