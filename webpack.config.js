@@ -3,44 +3,48 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var path = require('path');
-var webpack = require('webpack');
+
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
+var _webpack = require('webpack');
+
+var _webpack2 = _interopRequireDefault(_webpack);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var __DEV__ = process.env.NODE_ENV !== 'production';
-var definePlugin = new webpack.DefinePlugin({
+var definePlugin = new _webpack2.default.DefinePlugin({
   __DEV__: __DEV__,
-  __VERSION__: JSON.stringify(require('./package.json').version),
   __dirname__: '\'' + __dirname + '\''
 });
 
 exports.default = {
-  devtool: 'eval', // eval-source-map
-  entry: [
-  // 'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr&reload=true',
-  './src/js/index.js'],
+  devtool: 'eval-source-map', // eval eval-source-map
+  entry: './src/js/index.js',
   output: {
     path: __dirname,
     filename: 'app.bundle.js',
     publicPath: 'public'
   },
   module: {
-    loaders: [
-    // {
-    //   test: /\.js$/,
-    //   exclude: /(node_modules|bower_components)/,
-    //   loader: 'babel-loader',
-    //   query: {
-    //     presets: ['react', 'es2015', 'stage-0'],
-    //   }
-    // },
-    { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]-[local]!postcss-loader' }, { test: /\.png/, loader: 'url-loader?limit=100000&minetype=image/png' }, { test: /\.gif/, loader: 'url-loader?limit=100000&minetype=image/gif' }, { test: /\.jpg/, loader: 'file-loader' }, { test: /\.json$/, loaders: ['json-loader'] }]
+    loaders: [{
+      test: /\.js$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: 'babel-loader',
+      query: {
+        presets: ['stage-0']
+      }
+    }, { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]-[local]!postcss-loader' }, { test: /\.png/, loader: 'url-loader?limit=100000&minetype=image/png' }, { test: /\.gif/, loader: 'url-loader?limit=100000&minetype=image/gif' }, { test: /\.jpg/, loader: 'file-loader' }, { test: /\.json$/, loaders: ['json-loader'] }]
   },
   resolve: {
-    modules: ['node_modules', path.join(__dirname, 'src/js'), path.join(__dirname, 'src/css')],
+    modules: ['node_modules', _path2.default.join(__dirname, 'src/js'), _path2.default.join(__dirname, 'src/css')],
     alias: {
-      'webpack-assets': path.join(__dirname, 'webpack-assets.json')
+      'webpack-assets': _path2.default.join(__dirname, 'webpack-assets.json')
     }
   },
-  plugins: [new webpack.NoEmitOnErrorsPlugin(), definePlugin, new webpack.LoaderOptionsPlugin({
+  plugins: [new _webpack2.default.NoEmitOnErrorsPlugin(), definePlugin, new _webpack2.default.LoaderOptionsPlugin({
     minimize: true,
     debug: __DEV__
   })],

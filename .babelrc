@@ -1,4 +1,16 @@
 {
-  "presets": ["env"],
-  "plugins": ["transform-async-functions"]
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": "last 2 versions"
+        },
+        "modules": "commonjs",
+        "debug": true,
+        "useBuiltIns": true
+      }
+    ],
+    "stage-0"
+  ]
 }

@@ -4,7 +4,7 @@
     "browser": true,
     "node": true
   },
-  "extends": ["standard", "standard-react"],
+  "extends": ["standard"],
   "rules": {
     "newline-after-var": [2, "always"],
     "no-unused-expressions": 0,

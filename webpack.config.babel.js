@@ -1,18 +1,15 @@
-const path = require('path')
-const webpack = require('webpack')
+import path from 'path'
+import webpack from 'webpack'
+
 const __DEV__ = process.env.NODE_ENV !== 'production'
 const definePlugin = new webpack.DefinePlugin({
   __DEV__: __DEV__,
-  __VERSION__: JSON.stringify(require('./package.json').version),
   __dirname__: `'${__dirname}'`,
 })
 
 export default {
-  devtool: 'eval', // eval-source-map
-  entry: [
-    // 'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr&reload=true',
-    './src/js/index.js',
-  ],
+  devtool: 'eval-source-map', // eval eval-source-map
+  entry: './src/js/index.js',
   output: {
     path: __dirname,
     filename: 'app.bundle.js',
@@ -20,14 +17,14 @@ export default {
   },
   module: {
     loaders: [
-      // {
-      //   test: /\.js$/,
-      //   exclude: /(node_modules|bower_components)/,
-      //   loader: 'babel-loader',
-      //   query: {
-      //     presets: ['react', 'es2015', 'stage-0'],
-      //   }
-      // },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['stage-0'],
+        }
+      },
       { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]-[local]!postcss-loader' },
       { test: /\.png/, loader: 'url-loader?limit=100000&minetype=image/png' },
       { test: /\.gif/, loader: 'url-loader?limit=100000&minetype=image/gif' },
